@@ -1,27 +1,6 @@
 """testing suite for alternate.py"""
 import pytest
-from alternate import capitalize_words, capitalize_letters, get_input
-from unittest.mock import patch
-from unittest import TestCase
-
-
-def answer():
-    ans = get_input()
-    if ans == 'yes':
-        return 'you entered yes'
-    if ans == 'no':
-        return 'you entered no'
-    
-class Test(TestCase):
-
-    # get_input will return 'yes' during this test
-    @patch('builtins.input', return_value='yes')
-    def test_answer_yes(self, input):
-        self.assertEqual(answer(), 'you entered yes')
-
-    @patch('builtins.input', return_value='no')
-    def test_answer_no(self, input):
-        self.assertEqual(answer(), 'you entered no')
+from alternate import capitalize_words, capitalize_letters
 
 def test_capitalize_words_returns_string():
     """ensures that capitalize_words returns a string"""
@@ -54,6 +33,5 @@ def test_capitalise_letters_returns_string():
 )
 
 def test_capitalise_letter(input_str, expected):
+    """ensures that capitalize_letters returns an expected value"""
     assert capitalize_letters(input_str)  ==  expected
-
-
