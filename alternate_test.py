@@ -51,7 +51,10 @@ def test_validate_input_returns_string():
         ("words!?,.", "words"),
         ("[]cancel'%$^*():;./", "cancel"),
         ("word", "word"),
-        ('letter', "letter")
+        ('letter', "letter"),
+        ("LETTER", "letter"),
+        ("WORDS", "words"),
+        ("CANCEL", "cancel")
     )
 )
 

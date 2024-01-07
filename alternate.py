@@ -32,7 +32,7 @@ def validate_input(user_str: str) -> str:
     """Checks the passed user_str is valid. If not, recursively ask the user to input again."""
     valid_inputs = ["letters", "letter", "words", "word", "cancel"]
     #sanitise the input
-    user_str_no_punc = re.sub(r"[^\w\s]", "", user_str)
+    user_str_no_punc = re.sub(r"[^\w\s]", "", user_str).lower()
     #check input is in valid_inputs
     try:
         if user_str_no_punc.lower() not in valid_inputs:
