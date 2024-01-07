@@ -1,7 +1,8 @@
 """testing suite for alternate.py"""
 import pytest
-from alternate import capitalize_words, capitalize_letters
+from alternate import capitalize_words, capitalize_letters, validate_input
 
+# --------capitalize_words tests--------
 def test_capitalize_words_returns_string():
     """ensures that capitalize_words returns a string"""
     assert isinstance(capitalize_words("test"), str)
@@ -19,6 +20,7 @@ def test_capitalize_words(input_str, expected):
     "test that capitalize_words returns an expected value"
     assert capitalize_words(input_str)  ==  expected
 
+# --------capitalize_letters tests--------
 def test_capitalise_letters_returns_string():
     """ensures that capitalize_letters returns a string"""
     assert isinstance(capitalize_letters("test"), str)
@@ -32,6 +34,27 @@ def test_capitalise_letters_returns_string():
     )
 )
 
-def test_capitalise_letter(input_str, expected):
+def test_capitalize_letter(input_str, expected):
     """ensures that capitalize_letters returns an expected value"""
     assert capitalize_letters(input_str)  ==  expected
+
+# --------validate_input tests--------
+def test_validate_input_returns_string():
+    """ensures that validate_input returns a string"""
+    assert isinstance(validate_input("letters"), str)
+
+@pytest.mark.parametrize(
+    ("input_str", "expected"),
+    (
+        ("letters", "letters"),
+        ("!?letters.", "letters"),
+        ("words!?,.", "words"),
+        ("[]cancel'%$^*():;./", "cancel"),
+        ("word", "word"),
+        ('letter', "letter")
+    )
+)
+
+def test_validate_input_handles_variants(input_str, expected):
+    """ensures that validate_input removes punctuation and handles singular, as well as plural"""
+    assert validate_input(input_str)  ==  expected
