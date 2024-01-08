@@ -58,9 +58,14 @@ def capitalize_letters(user_str: str) -> str:
     return "".join([word.upper() if i % 2 else word.lower() for i, word in enumerate(user_str)])
 
 # Runs from here. 
-print(f"{"="*10}alternate.py{"="*10}\n")
+print(f"{'*'*60}")
+print(f"{'='*24}alternate.py{'='*24}")
+print(f"{'*'*60}\n")
 
 if __name__ == "__main__":
     app()
 
-print(f"\n{"="*10}alternate.py END{"="*10}")
+print(f"\n{'*'*60}")
+print(f"{'='*22}alternate.py END{'='*22}")
+print(f"{'*'*60}")
+
